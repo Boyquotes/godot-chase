@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/150950__outroelison__teleport.mp3-410f1700e76ec6d5cce8e6171e264771.mp3str"
+
+[deps]
+
+source_file="res://Images/150950__outroelison__teleport.mp3"
+dest_files=[ "res://.import/150950__outroelison__teleport.mp3-410f1700e76ec6d5cce8e6171e264771.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

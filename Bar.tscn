@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://HealthBar.gd" type="Script" id=1]
+
+[node name="Bar" type="ColorRect"]
+margin_right = 167.0
+margin_bottom = 32.0
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 5.0
+margin_top = 4.0
+margin_right = 163.0
+margin_bottom = 28.0
+color = Color( 0.054902, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

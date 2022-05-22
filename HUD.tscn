@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://HealthBar.gd" type="Script" id=2]
+[ext_resource path="res://HUD.gd" type="Script" id=3]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="HealthBar" type="ColorRect" parent="." instance=ExtResource( 1 )]
+margin_left = 40.0
+margin_top = 33.0
+margin_right = 208.0
+margin_bottom = 66.0
+rect_scale = Vector2( 0.7, 0.5 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+cutoffs = {
+"high": 0.67,
+"low": 0.0,
+"med": 0.33
+}
+colors = {
+"high": Color( 0, 1, 0, 1 ),
+"low": Color( 1, 0, 0, 1 ),
+"med": Color( 1, 1, 0, 1 )
+}
+
+[node name="EnergyBar" type="ColorRect" parent="." instance=ExtResource( 1 )]
+margin_left = 40.0
+margin_top = 62.0
+margin_right = 208.0
+margin_bottom = 95.0
+rect_scale = Vector2( 0.7, 0.5 )
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+cutoffs = {
+"high": 0.7,
+"low": 0,
+"med": 0.2
+}
+colors = {
+"high": Color( 0, 0.952941, 1, 1 ),
+"low": Color( 0, 0.0392157, 0.6, 1 ),
+"med": Color( 0, 0.180392, 1, 1 )
+}
+
+[node name="LevelLabel" type="Label" parent="."]
+margin_left = 200.0
+margin_top = 33.0
+margin_right = 279.0
+margin_bottom = 47.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.854902, 0.854902, 0.854902, 1 )
+text = "LVL X - XXXX"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerLabel" type="Label" parent="."]
+margin_left = 500.0
+margin_top = 33.0
+margin_right = 500.0
+margin_bottom = 47.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "TIME: XX"
+__meta__ = {
+"_edit_use_anchors_": false
+}

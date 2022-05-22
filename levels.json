@@ -1,0 +1,9 @@
+{
+	0 : {"name": "Tutorial", "time": 60, "enemies":[]},
+	1 : {"name": "Chased", "time": 30, "enemies":[CHASER], "transition" : true},
+	2 : {"name": "Make It Double", "time": 30, "enemies":[CHASER, TELEPORTER], "transition" : false},
+	3 : {"name": "Arrows", "time": 45, "enemies":[ARCHER, ARCHER, ARCHER], "transition" : false},
+	4 : {"name": "Melee and Ranged", "time": 50, "enemies":[ARCHER, ARCHER, CHASER], "transition" : false},
+	
+	5 : {"name": "Testing", "time": 50, "enemies":[ARCHER, ARCHER, CHASER], "transition" : false},
+}

@@ -1,0 +1,417 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://StartScreen.gd" type="Script" id=1]
+[ext_resource path="res://plastic_tiles.png" type="Texture" id=2]
+[ext_resource path="res://Planet.gd" type="Script" id=3]
+[ext_resource path="res://light.png" type="Texture" id=4]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.522124, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.0941871, 0, 0.165851, 1, 0.180392, 0, 0.317647, 1 )
+
+[sub_resource type="GradientTexture" id=6]
+resource_local_to_scene = true
+gradient = SubResource( 5 )
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -10, 0, -9, 4, -7, 7, -4, 9, 0, 10, 4, 9, 7, 7, 9, 4, 10, 0, 9, -4, 7, -7, 4, -9, 0, -10, -4, -9, -7, -7, -9, -4 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=4]
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Start" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Start"]
+position = Vector2( 723, 725.5 )
+scale = Vector2( 0.74707, 1541 )
+texture = SubResource( 6 )
+
+[node name="Label" type="Label" parent="Start"]
+margin_left = 224.0
+margin_top = 447.0
+margin_right = 356.0
+margin_bottom = 461.0
+rect_scale = Vector2( 2, 2 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "Press ENTER to start.
+
+Press H for help."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Planet" type="StaticBody2D" parent="Start"]
+position = Vector2( 100, 350 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Start/Planet"]
+occluder = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Start/Planet"]
+frames = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start/Planet"]
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Particles2D" type="CPUParticles2D" parent="Start/Planet"]
+amount = 18
+lifetime = 5.0
+emission_shape = 3
+emission_points = PoolVector2Array( -1, 0, 1, 0 )
+emission_colors = PoolColorArray( 1, 0, 0, 1, 0, 0.0627451, 1, 1, 0.12549, 1, 0, 1 )
+direction = Vector2( 0, 0 )
+spread = 180.0
+gravity = Vector2( 0, -0.5 )
+initial_velocity = 202.0
+initial_velocity_random = 0.16
+angle = 19.5
+angle_random = 0.14
+scale_amount = 4.0
+hue_variation = -0.24
+hue_variation_random = 0.16
+
+[node name="Planet2" type="StaticBody2D" parent="Start"]
+position = Vector2( 600, 350 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Start/Planet2"]
+occluder = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Start/Planet2"]
+frames = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start/Planet2"]
+shape = SubResource( 4 )
+disabled = true
+
+[node name="Particles2D" type="CPUParticles2D" parent="Start/Planet2"]
+visible = false
+amount = 17
+lifetime = 5.0
+emission_shape = 3
+emission_points = PoolVector2Array( -1, 0, 1, 0 )
+emission_colors = PoolColorArray( 1, 0, 0, 1, 0, 0.0627451, 1, 1, 0.12549, 1, 0, 1 )
+spread = 180.0
+gravity = Vector2( 0, -0.5 )
+initial_velocity = 202.0
+initial_velocity_random = 0.16
+scale_amount = 4.0
+hue_variation = -0.89
+hue_variation_random = 0.16
+
+[node name="Light2D" type="Light2D" parent="Start"]
+visible = false
+position = Vector2( 350, 350 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+shadow_enabled = true
+
+[node name="Sprite" type="Sprite" parent="Start/Light2D"]
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 4 )
+
+[node name="Label2" type="Label" parent="Start"]
+margin_left = -1.0
+margin_top = 343.0
+margin_right = 237.0
+margin_bottom = 357.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "CHASE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Transition" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+margin_right = 703.0
+margin_bottom = 703.0
+color = Color( 0, 0.113725, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Transition"]
+margin_left = 2.0
+margin_top = 362.0
+margin_right = 280.0
+margin_bottom = 376.0
+rect_scale = Vector2( 2.5, 2.5 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "Next Level - XXXX"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Pause"]
+margin_right = 703.0
+margin_bottom = 703.0
+color = Color( 0, 0.113725, 0.113725, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Pause/ColorRect"]
+margin_left = 285.0
+margin_top = 219.0
+margin_right = 330.0
+margin_bottom = 355.0
+
+[node name="ColorRect2" type="ColorRect" parent="Pause/ColorRect"]
+margin_left = 365.0
+margin_top = 219.0
+margin_right = 410.0
+margin_bottom = 355.0
+
+[node name="Label" type="Label" parent="Pause"]
+margin_top = 411.0
+margin_right = 350.0
+margin_bottom = 425.0
+rect_scale = Vector2( 2, 2 )
+text = "Press ESC to unpause."
+align = 1
+
+[node name="Win" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Win"]
+margin_right = 700.0
+margin_bottom = 700.0
+color = Color( 1, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Win/ColorRect"]
+margin_left = 35.0
+margin_top = 35.0
+margin_right = 665.0
+margin_bottom = 665.0
+color = Color( 0.686275, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Win/ColorRect"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 600.0
+margin_bottom = 600.0
+color = Color( 0, 0.32549, 0.32549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Win/ColorRect"]
+margin_left = -1.0
+margin_top = 343.0
+margin_right = 232.0
+margin_bottom = 357.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "YOU WIN!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="GameOver"]
+margin_right = 700.0
+margin_bottom = 700.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="GameOver/ColorRect2"]
+margin_left = 35.0
+margin_top = 35.0
+margin_right = 665.0
+margin_bottom = 665.0
+color = Color( 0.686275, 0, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="GameOver/ColorRect2"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 600.0
+margin_bottom = 600.0
+color = Color( 0.00392157, 0.129412, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GameOver/ColorRect2"]
+margin_left = -1.0
+margin_top = 343.0
+margin_right = 237.0
+margin_bottom = 357.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "YOU DIED."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="GameOver/ColorRect2"]
+margin_left = 1.0
+margin_top = 422.0
+margin_right = 700.0
+margin_bottom = 436.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Better Luck Next Time!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Help" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Help"]
+margin_right = 700.0
+margin_bottom = 700.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Help"]
+margin_left = -6.0
+margin_top = 38.0
+margin_right = 232.0
+margin_bottom = 229.0
+rect_scale = Vector2( 3, 3 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "INFO
+x~~~~~~~~~~~~~~~~x"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Help"]
+margin_left = 83.0
+margin_top = 150.0
+margin_right = 433.0
+margin_bottom = 504.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "WASD or arrow keys to move.
+
+Shift to dash.
+
+Dashing grants temporary invulnerability.
+
+Touching enemies and their projectiles may hurt.
+
+Dashing through water takes more effort.
+
+Survive to win.
+
+Press ESC to pause.
+
+Press ESC to leave this menu.
+
+
+
+
+
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Help/Label2"]
+margin_left = 64.6667
+margin_top = 338.0
+margin_right = 331.667
+margin_bottom = 352.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Made for 2022 Godot Wild Jam by Anaton."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

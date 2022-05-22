@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/404562__superphat__assaultrifle1.wav-c14480cea49c8a864bdc5e2e7317376b.sample"
+
+[deps]
+
+source_file="res://Images/404562__superphat__assaultrifle1.wav"
+dest_files=[ "res://.import/404562__superphat__assaultrifle1.wav-c14480cea49c8a864bdc5e2e7317376b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
